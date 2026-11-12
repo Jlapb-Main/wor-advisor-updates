@@ -2,5 +2,13 @@
   "schema_version": 1,
   "product": "WoR Advisor",
   "channel": "stable",
-  "release": null
+  "release": {
+    "version": "0.1.0",
+    "download_url": "https://github.com/Jlapb-Main/wor-advisor-updates/releases/download/v0.1.0/WoR-Advisor-0.1.0-windows-x64.zip",
+    "sha256": "63d45a3f019537ed8781a3d3e5eb9d05297ac492bb441f68458c7d407bda75ca",
+    "source_commit": "8d7a528539a3b55623d93bad0b5aa6dfa7dca3c7",
+    "notes": "https://github.com/Jlapb-Main/wor-advisor-updates/releases/tag/v0.1.0",
+    "size_bytes": 363810192,
+    "released_at": "2026-11-12T12:29:09.437039+00:00"
+  }
 }
