@@ -1,0 +1,42 @@
+name: Publish verified Windows release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Application version (for example 0.1.0)
+        required: true
+        type: string
+      artifact_url:
+        description: Short-lived download URL for the verified source Actions artifact
+        required: true
+        type: string
+      archive_sha256:
+        description: Expected SHA-256 of the inner portable Windows ZIP
+        required: true
+        type: string
+      source_commit:
+        description: Full private source commit SHA recorded in the artifact
+        required: true
+        type: string
+      source_run:
+        description: Verified source Actions run ID
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: wor-advisor-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify package, publish assets and update stable channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/publish_release.py
